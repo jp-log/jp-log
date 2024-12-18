@@ -10,3 +10,41 @@
     <p>This is a sample page hosted on GitHub Pages.</p>
 </body>
 </html>
+<section id="landing">
+    <div class="container">
+        <h2>Landing Page</h2>
+        <p>Discover more about our services and offerings.</p>
+        <button id="learnMoreBtn">Learn More</button>
+    </div>
+</section>
+
+<script>
+    document.getElementById('learnMoreBtn').addEventListener('click', function() {
+        alert('More information coming soon!');
+    });
+</script>
+
+<style>
+    #landing {
+        text-align: center;
+        padding: 50px;
+        background-color: #f4f4f4;
+    }
+    #landing .container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    #landing h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+    #landing p {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+    }
+    #landing button {
+        padding: 10px 20px;
+        font-size: 1em;
+        cursor: pointer;
+    }
+</style>
