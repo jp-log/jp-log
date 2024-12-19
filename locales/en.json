@@ -1,0 +1,104 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Jerusalem Pillars",
+    "title_br": "for Your ",
+    "title_span": "Logistic Services!"
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "We aspire to become the #1 logistics service provider in the market through building and maintaining strong and honest relations with our clients, agents and partners.",
+    "whatWeDo": {
+      "title": "What We Do?",
+      "content": "Jerusalem Pillars is a logistics, shipping, and transportation company founded in 2014 by a team of professionals who enjoy over 14 years of experience in the field. Our services cover countries all around the world and we run our operations through our head office in Amman, Jordan, as well as our regional office in Istanbul, Turkey. JPLS is an active member of Jordan Logistics Association and an accredited member of Jordan Maritime Commission."
+    },
+    "ourValues": {
+      "title": "Our Values",
+      "content": "We believe that honesty, trust, and punctuality are key to success. Applying those traits, not only with our clients, but with our agents and business partners paved the way for us to grow and build more solid business relations."
+    },
+    "ourMission": {
+      "title": "Our Mission",
+      "content": "We always thrive to:",
+      "missionList": [
+        "Be your reliable and punctual logistics service provider",
+        "Maintain and enhance the quality of our services to cater to all market needs.",
+        "Expand our knowledge and reach.",
+        "Offer top-notch services at competitive prices."
+      ]
+    },
+    "ourVision": {
+      "title": "Our Vision",
+      "content": "We aspire to become the #1 logistics service provider in the market through building and maintaining strong and honest relations with our clients, agents and partners."
+    }
+  },
+  "services": {
+    "title": "Services",
+    "intro": "We offer a wide range of services to cater to all your logistic needs",
+    "seaFreight": {
+      "title": "Sea Freight",
+      "description1": "We have a team of experts that will help you getting your goods shipped through best means, be it reefer containers, insulated, open top, flat rack, general purpose container among others. Sea Freight is responsible for over 90% of the total volume of global trade, which makes it the most important forwarding method in the world.",
+      "description2": "At JPLS we have grown a wide net of relations to offer best quality service for all sorts of shipments starting from raw materials and foodstuff to dangerous goods and many more. We have a team of experts that will help you getting your goods shipped through best means, be it reefer containers, insulated, open top, flat rack, general purpose container among others. Our import and export service varies to cover:",
+      "list": [
+        "Door to Door",
+        "Door to Port",
+        "Port to Port",
+        "Port to Door"
+      ],
+      "conclusion": "Although sea freight is the most renowned method, it is not the safest one, which is why we offer insurance service that you may know more about when you contact us."
+    },
+    "airFreight": {
+      "title": "Air Freight",
+      "description1": "All you need to know more is send us an email, call us or pay us a visit.",
+      "description2": "Air freight is the forwarding method with many perks! It is the fastest and safest forwarding method; it offers vast reach, highly reliable arrival and departure times, less need for warehousing, less packaging and more.",
+      "description3": "At JPLS we offer comprehensive import and export freight services through our solid relations with regional and international carriers at the best rates and confirmed space. All you need to know more is send us an email, call us or pay us a visit."
+    },
+    "landFreight": {
+      "title": "Land Freight",
+      "description1": "All you need to know more is send us an email, call us or pay us a visit. JPLS specializes in land freight (both import and export) for both local and international trucking, especially in the MENA region, we have our own inventory and great partnership with the most reliable hauler companies to provide you with the best service at the best rates.",
+      "description2": "At JPLS we have grown a wide net of relations to offer best quality service for all sorts of shipments starting from raw materials and foodstuff to dangerous goods and many more. We have a team of experts that will help you getting your goods shipped through best means, be it reefer containers, insulated, open top, flat rack, general purpose container among others."
+    },
+    "customClearance": {
+      "title": "Custom Clearance",
+      "description1": "We are an agent in Jordan & Turkey who can fast-track your consignments, giving you the advantage of priority checks and fewer checks",
+      "description2": "our dedicated team for customs clearance takes care of all the documentation, taxes and customs duty making the entire process hassle free for you",
+      "description3": "We  can help minimize delays and enhance efficiency, allowing your products to shipping promptly."
+    },
+    "specialServices": {
+      "title": "Special Services",
+      "list": [
+        "FCL",
+        "LCL",
+        "Bulk",
+        "RORO"
+      ]
+    },
+    "warehousing": {
+      "title": "Warehousing",
+      "description1": "Create a flexible, customized strategy with the refrigerated, frozen, and dry warehousing options you need. Secure space for inventory and trust our experts to support the movement of your products both into and out of the warehouse.",
+      "description2": "Increase your on-time deliveries by positioning your freight in the right locations within our  network of warehouse facilities. Meet your ever-increasing ecommerce demands with custom warehouse supply chain"
+    }
+  },
+  "footer": {
+    "companyName": "Jerusalem Pillars",
+    "description": "Logistics, shipping, and transportation company founded in 2014...",
+    "jordanOffice": {
+      "title": "Jordan office:",
+      "address": "Al-Moqabalain, Next to Saifway, Al-Sakhra Al-Mosharafa Street, Amman, Jordan",
+      "phone1": "+962-64397035",
+      "phone2": "+962-796197864",
+      "phone3": "+962-797751847"
+    },
+    "turkeyOffice": {
+      "title": "Turkey office:",
+      "address": "başakşehir mah, Toros Cad. 1, arterium 4, 6 kat ofis 55, Istanbul, Turkey",
+      "phone": "+905527559469"
+    },
+    "copyright": "© 2024 Jerusalem Pillars. All Rights Reserved.",
+    "designedBy": "Designed by"
+  }
+}
