@@ -32,6 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // Function to translate DOM elements
   function translateDOM(translations) {
     // Cache elements if not already cached
+    // Note: Cache persists across language changes for performance.
+    // If DOM structure changes dynamically, reload the page or invalidate cache.
     if (!translationElements) {
       translationElements = document.querySelectorAll('[data-i18n]');
     }
@@ -61,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let value = translations;
         for (const nestedKey of nestedKeys) {
           value = value[nestedKey];
+          // Exit early if translation key is missing (fail silently - intentional)
           if (value === undefined) break;
         }
         
@@ -70,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else if (value !== undefined) {
           element.textContent = value;
         }
+        // Note: Missing translations are silently ignored to maintain partial functionality
       }
     });
   }
