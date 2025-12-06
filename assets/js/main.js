@@ -1,11 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+  // Cache for translation elements to avoid repeated queries
+  let translationElements = null;
+
   // Function to fetch and set language
   function changeLanguage(lang) {
     fetch(`/locales/${lang}.json`)
       .then(response => response.json())
       .then(data => {
-        console.log('Fetched translations:', data); // Log translations for debugging
         translateDOM(data);
         document.documentElement.lang = lang;
         document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr'; // Set direction based on language
@@ -16,49 +18,59 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Function to insert list items
   function insertListItems(element, items) {
-    element.innerHTML = ''; // Clear existing content
+    // Use DocumentFragment for better performance
+    const fragment = document.createDocumentFragment();
     items.forEach(item => {
       const listItem = document.createElement('li');
       listItem.innerHTML = `<i class="bi bi-check-circle"></i> ${item}`;
-      // listItem.innerHTML = `${item}`;
-      // listItem.classList.add('bi', 'bi-check-circle');
-
-      element.appendChild(listItem);
+      fragment.appendChild(listItem);
     });
+    element.innerHTML = ''; // Clear existing content
+    element.appendChild(fragment);
   }
 
   // Function to translate DOM elements
   function translateDOM(translations) {
-    const elements = document.querySelectorAll('[data-i18n]');
-    elements.forEach(element => {
+    // Cache elements if not already cached
+    if (!translationElements) {
+      translationElements = document.querySelectorAll('[data-i18n]');
+    }
+    
+    translationElements.forEach(element => {
       const key = element.getAttribute('data-i18n');
-      if (key.includes('.')) {
-        // Handle nested keys
-        const nestedKeys = key.split('.');
-        let value = translations;
-        nestedKeys.forEach(nestedKey => {
-          value = value[nestedKey];
-          console.log("VAL", value);
-        });
-        if (Array.isArray(value)) {
-          // Handle array values (if needed)
-          insertListItems(element, value);
-        } else {
-          element.textContent = value;
-        }
-      }
+      
       // Handle specific structure for hero section
       if (key === 'hero.title') {
         const title = translations.hero.title;
         const title_br = translations.hero.title_br;
         const title_span = translations.hero.title_span;
-        console.log(title, title_br, title_span);
         if (title && title_br && title_span) {
           element.innerHTML = `${title}<br>${title_br}<span>${title_span}</span>`;
         }
+        return;
       }
-      if (key === 'footer.designedBy')
+      
+      if (key === 'footer.designedBy') {
         element.innerHTML = `${translations.footer.designedBy} <a href="https://jp-log.com/">${translations.footer.companyName}</a>`;
+        return;
+      }
+      
+      if (key.includes('.')) {
+        // Handle nested keys
+        const nestedKeys = key.split('.');
+        let value = translations;
+        for (const nestedKey of nestedKeys) {
+          value = value[nestedKey];
+          if (value === undefined) break;
+        }
+        
+        if (Array.isArray(value)) {
+          // Handle array values (for lists)
+          insertListItems(element, value);
+        } else if (value !== undefined) {
+          element.textContent = value;
+        }
+      }
     });
   }
   // Function to update language switcher button text and direction
@@ -146,8 +158,40 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     })
   }
-  window.addEventListener('load', navbarlinksActive)
-  onscroll(document, navbarlinksActive)
+  
+  /**
+   * Consolidated window load event handler
+   */
+  window.addEventListener('load', () => {
+    // Navbar links active state
+    navbarlinksActive();
+    
+    // Header scrolled state
+    if (selectHeader) {
+      headerScrolled();
+    }
+    
+    // Back to top button
+    if (backtotop) {
+      toggleBacktotop();
+    }
+    
+    // Scroll with offset on page load with hash links in the url
+    if (window.location.hash && select(window.location.hash)) {
+      scrollto(window.location.hash);
+    }
+    
+    // Animation on scroll initialization
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
+    });
+  });
+  
+  // Set up scroll listeners
+  onscroll(document, navbarlinksActive);
 
   /**
    * Scrolls to an element with header offset
@@ -179,7 +223,6 @@ document.addEventListener('DOMContentLoaded', function () {
         selectHeader.classList.remove('header-scrolled')
       }
     }
-    window.addEventListener('load', headerScrolled)
     onscroll(document, headerScrolled)
   }
 
@@ -195,7 +238,6 @@ document.addEventListener('DOMContentLoaded', function () {
         backtotop.classList.remove('active')
       }
     }
-    window.addEventListener('load', toggleBacktotop)
     onscroll(document, toggleBacktotop)
   }
 
@@ -235,29 +277,5 @@ document.addEventListener('DOMContentLoaded', function () {
       scrollto(this.hash)
     }
   }, true)
-
-  /**
-   * Scroll with ofset on page load with hash links in the url
-   */
-  window.addEventListener('load', () => {
-    if (window.location.hash) {
-      if (select(window.location.hash)) {
-        scrollto(window.location.hash)
-      }
-    }
-  });
-
-
-  /**
-   * Animation on scroll
-   */
-  window.addEventListener('load', () => {
-    AOS.init({
-      duration: 1000,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
-    })
-  });
 
 })();
